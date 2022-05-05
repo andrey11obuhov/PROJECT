@@ -1,37 +1,49 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
 
+window = tk.Tk()
+window.geometry('450x350')
+window.title("супермегагиперкласс")
 
-window = Tk()
-window.title("Супермегагипер Chart")
-window.geometry('350x450')
-lbl = Label(window, text="Главная страница")
-lbl.pack(anchor = 'center')
+labeldata = ttk.Label(window, text = "Введите дату(опционально):")
+labeldata.grid(column=1, row=1)
 
-data = "Поиск чарта по дате:"
-labeldata = Label(text=data, justify=LEFT)
-labeldata.place(x=45, y=45)
+txt = tk.Entry(window, width=10)
+txt.insert(0, "YYYY-MM-DD")
+txt.grid(column=1, row=2, sticky='ew')
 
-data1 = "временной \n отрезок:"
-labeldata1 = Label(text=data1, justify=LEFT)
-labeldata1.place(x=180, y=40)
+labelTop = ttk.Label(window, text = "Выберите функцию:")
+labelTop.grid(column=1, row=4)
 
-song = "Место песни:"
-labelsong = Label(text=song, justify=LEFT)
-labelsong.place(x=45, y=165)
+combo = ttk.Combobox(window, values=["Поиск чарта по дате", "Место песни",
+                                     "Кол-во песен мызыканта",
+                                     "Кол-во песен мызыканта в период",
+                                     "Пиковая позиция песни",
+                                     "Кол-во недель песни в чарте",
+                                     "Является ли песня новой на дату",
+                                     "Есть ли песня со словом ___",
+                                     "Сколько песен начинается с буквы ___",
+                                     "Какая песня находится на ___ месте?"])
+print(dict(combo))
+combo.grid(column=1, row=5)
+combo.current(1)
+print(combo.current(), combo.get())
 
-song1 = "в чарте за временной \n период:"
-labelsong1 = Label(text=song1, justify=LEFT)
-labelsong1.place(x=180, y=160)
+labeldata = ttk.Label(window, text = " ♡♡♡ ")
+labeldata.grid(column=1, row=0)
 
-artiste = "Кол-во песен \n мызыканта:"
-labelartiste = Label(text=artiste, justify=LEFT)
-labelartiste.place(x=45, y=285)
+labeldata = ttk.Label(window, text = " ♡♡♡♡♡ ")
+labeldata.grid(column=1, row=3)
 
-artiste1 = "в чарте за временной \n период:"
-labelartiste1 = Label(text=artiste1, justify=LEFT)
-labelartiste1.place(x=180, y=285)
+labeldata = ttk.Label(window, text = " ♡♡♡♡♡♡♡ ")
+labeldata.grid(column=1, row=6)
 
+labeldata = ttk.Label(window, text = " ♡                                ")
+labeldata.grid(column=0, row=0)
 
+btn = tk.Button(window, text='Поиск')
+btn.grid(column=1, row=7)
 
 
 
