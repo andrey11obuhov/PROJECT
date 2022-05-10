@@ -37,20 +37,29 @@ def ch3(data:str, art:str):
     
     
 def ch4(datafrom:str, datato:str, art:str):
-    datafrom1=datafrom.split('-')
-    datato1=datato.split('-')
-    datato1=datetime.data(datato1[0], datato1[1], datato1[2])
-    datafrom1=datetime.data(datafrom1[0], datafrom1[1], datafrom1[2])
-    dats=[]
-    dd=datafrom1
-    d1=datafrom
-    chart=[]
-    chartfrom= billboard.ChartData('hot-100', datafrom )
-    chartto= billboard.ChartData('hot-100', datato )
-    if chartto!= chartfrom:
-        while dd<=datato1:
-            chart= billboard.ChartData('hot-100', d1 )
-    return 
+    dd=datafrom
+    count=0
+    songs=[]
+    while strTodate(dd)<strTodate(datafrom):
+        chart=billboard.ChartData('hot-100', dd)
+        for i in range (len(chart)):
+            if chart[i].artist==art and not chart[i].title in songs:
+                count+=1
+        dd=move(dd)
+    return count
+
+
+def ch5(datafrom:str, datato:str, art:str, song: str):
+    dd=datafrom
+    count=0
+    while strTodate(dd)<strTodate(datafrom):
+        chart=billboard.ChartData('hot-100', dd)
+        for i in range (len(chart)):
+            if chart[i].artist==art and chart[i].title==song:
+                if count < chart[i].peakPos:
+                    count=chart[i].peakPos
+            dd=move(dd)
+    return count
 
 
 def strTodate(date:str):
